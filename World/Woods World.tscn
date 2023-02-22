@@ -1,0 +1,84 @@
+[gd_scene load_steps=10 format=3 uid="uid://dewryt8mviqld"]
+
+[ext_resource type="Texture2D" uid="uid://bw32m8alaaytl" path="res://Assets/World/background/Woods World/background_layer_1.png" id="1_q47ag"]
+[ext_resource type="Texture2D" uid="uid://ikkmmnycxvsu" path="res://Assets/World/background/Woods World/background_layer_2.png" id="2_7tbmo"]
+[ext_resource type="Texture2D" uid="uid://c7yii5t6wisde" path="res://Assets/World/background/Woods World/background_layer_3.png" id="3_j0myb"]
+[ext_resource type="Texture2D" uid="uid://dlghb0t6x4tah" path="res://Assets/World/oak_woods_tileset.png" id="5_grc6p"]
+[ext_resource type="Texture2D" uid="uid://dlxw4lxgwogbm" path="res://Assets/World/decorations/rock_1.png" id="6_s0mh5"]
+[ext_resource type="Texture2D" uid="uid://cptxxmyut3xqf" path="res://Assets/World/decorations/sign.png" id="7_8do4g"]
+[ext_resource type="PackedScene" uid="uid://bxhgxmk0aau5h" path="res://Player/Player.tscn" id="8_g2l6i"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qn8u6"]
+texture = ExtResource("5_grc6p")
+texture_region_size = Vector2i(24, 24)
+12:8/size_in_atlas = Vector2i(2, 1)
+12:8/next_alternative_id = 2
+12:8/0 = 0
+12:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+12:8/0/physics_layer_0/angular_velocity = 0.0
+12:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -12, 24, -12, 24, 12, -24, 12)
+
+[sub_resource type="TileSet" id="TileSet_xkj4e"]
+tile_size = Vector2i(48, 24)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_qn8u6")
+
+[node name="World" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.01)
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(160, 78)
+texture = ExtResource("1_q47ag")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.15, 0.02)
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(160, 78)
+texture = ExtResource("2_7tbmo")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.03)
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(160, 78)
+texture = ExtResource("3_j0myb")
+
+[node name="Floor" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_xkj4e")
+format = 2
+layer_0/tile_data = PackedInt32Array(393216, 786433, 8, 393217, 786433, 8, 393218, 786433, 8, 393219, 786433, 8, 393220, 786433, 8, 393221, 786433, 8, 393223, 786433, 8, 393224, 786433, 8, 393225, 786433, 8, 393226, 786433, 8, 393227, 786433, 8, 393228, 786433, 8, 393229, 786433, 8, 393230, 786433, 8, 393231, 786433, 8, 393232, 786433, 8, 393233, 786433, 8, 393234, 786433, 8, 393235, 786433, 8, 393236, 786433, 8, 393237, 786433, 8, 393238, 786433, 8, 393239, 786433, 8, 393240, 786433, 8, 393241, 786433, 8, 393242, 786433, 8, 393243, 786433, 8, 393244, 786433, 8, 393245, 786433, 8, 393246, 786433, 8, 393247, 786433, 8, 393248, 786433, 8, 327697, 786433, 8, 327701, 786433, 8, 327705, 786433, 8, 327709, 786433, 8, 262174, 786433, 8, 327710, 786433, 8, 327711, 786433, 8, 262175, 786433, 8, 196639, 786433, 8, 196640, 786433, 8, 262176, 786433, 8, 327712, 786433, 8, 196641, 786433, 8, 262177, 786433, 8, 327713, 786433, 8, 393249, 786433, 8, 393250, 786433, 8, 327714, 786433, 8, 262178, 786433, 8, 196642, 786433, 8, 196643, 786433, 8, 262179, 786433, 8, 327715, 786433, 8, 393251, 786433, 8, 393252, 786433, 8, 327716, 786433, 8, 262180, 786433, 8, 196644, 786433, 8, 393253, 786433, 8, 327717, 786433, 8, 262181, 786433, 8, 196645, 786433, 8, 131109, 786433, 8, 65574, 786433, 8, 39, 786433, 8, 65575, 786433, 8, 40, 786433, 8, 65576, 786433, 8, -65496, 786433, 8, -131031, 786433, 8, -65495, 786433, 8, 41, 786433, 8, 65577, 786433, 8, 393222, 786433, 8)
+
+[node name="Rock1" type="Sprite2D" parent="Floor"]
+position = Vector2(238, 138.5)
+texture = ExtResource("6_s0mh5")
+
+[node name="Rock2" type="Sprite2D" parent="Floor"]
+position = Vector2(542, 138.5)
+texture = ExtResource("6_s0mh5")
+
+[node name="Rock3" type="Sprite2D" parent="Floor"]
+position = Vector2(944, 138.5)
+texture = ExtResource("6_s0mh5")
+
+[node name="Sign" type="Sprite2D" parent="Floor"]
+position = Vector2(324, 128.5)
+texture = ExtResource("7_8do4g")
+
+[node name="Sign2" type="Sprite2D" parent="Floor"]
+position = Vector2(1318, 128.5)
+texture = ExtResource("7_8do4g")
+
+[node name="Player" parent="." instance=ExtResource("8_g2l6i")]
+position = Vector2(191, 118)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(20, -40)
+zoom = Vector2(3.8, 3.8)
