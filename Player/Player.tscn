@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bxhgxmk0aau5h"]
+[gd_scene load_steps=28 format=3 uid="uid://bxhgxmk0aau5h"]
 
 [ext_resource type="Texture2D" uid="uid://dkfaukijvuc65" path="res://Assets/Character/Idle/Idle_1.png" id="1_m4xyh"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_vgn3m"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://ma56fga7r3fc" path="res://Assets/Character/Run Aim/Run-Aim_6.png" id="15_vp02s"]
 [ext_resource type="Texture2D" uid="uid://c7p86dkky1yh4" path="res://Assets/Character/Run Aim/Run-Aim_7.png" id="16_nmvcr"]
 [ext_resource type="Texture2D" uid="uid://bam7ww6b36hje" path="res://Assets/Character/Run Aim/Run-Aim_8.png" id="17_cyr8r"]
+[ext_resource type="FontFile" uid="uid://crqsri5laic81" path="res://Assets/Fonts/_bitmap_font____romulus_by_pix3m-d6aokem.ttf" id="24_fupka"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wgebr"]
 animations = [{
@@ -117,6 +118,9 @@ animations = [{
 radius = 8.0
 height = 32.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_px5dd"]
+font = ExtResource("24_fupka")
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_vgn3m")
 
@@ -133,3 +137,11 @@ shape = SubResource("CapsuleShape2D_s7cdw")
 [node name="JumpTimer" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = -26.0
+offset_top = -27.0
+offset_right = 14.0
+offset_bottom = -4.0
+text = "idle"
+label_settings = SubResource("LabelSettings_px5dd")

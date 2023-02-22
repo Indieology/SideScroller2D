@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 window/stretch/mode="viewport"
 
+[gui]
+
+theme/default_font_subpixel_positioning=0
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

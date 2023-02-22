@@ -34,22 +34,22 @@ func run_current_state():
 	
 	match current_state:
 		states.IDLE:
-			print("idle")
+			$Label.text = "IDLE"
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			$AnimatedSprite2D.play("Idle")
 		states.RUN:
-			print("run")
+			$Label.text = "RUN"
 			velocity.x = direction * SPEED
 			$AnimatedSprite2D.play("Run_Aim")
 		states.JUMP:
-			print("jump")
+			$Label.text = "JUMP"
 			$AnimatedSprite2D.play("Jump")
 			velocity.x = direction * SPEED
 			if $JumpTimer.time_left <= 0:
 				velocity.y = JUMP_VELOCITY
 				$JumpTimer.start()
 		states.FALL:
-			print("fall")
+			$Label.text = "FALL"
 			$AnimatedSprite2D.play("Fall")
 	
 	
