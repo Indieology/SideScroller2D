@@ -7,8 +7,12 @@ const JUMP_VELOCITY = -275.0
 var gravity = 986
 var direction = Vector2.ZERO
 
-enum states {IDLE, RUN, JUMP, FALL}
+enum states {IDLE, RUN, JUMP, FALL, SLIDE}
 var current_state = states.IDLE
+
+func _ready():
+	$SlideTimer.stop()
+	current_state = states.RUN
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -21,13 +25,17 @@ func _physics_process(delta):
 		current_state = states.JUMP
 	elif velocity.y > 15:
 		current_state = states.FALL
-	elif direction and current_state != states.JUMP:
+	elif direction and current_state != states.JUMP and $SlideTimer.is_stopped():
 		current_state = states.RUN
-	elif $JumpTimer.is_stopped():
+		if Input.is_action_just_pressed("ui_down"):
+			current_state = states.SLIDE
+	elif $JumpTimer.is_stopped() and $SlideTimer.is_stopped():
 		if direction:
 			current_state = states.RUN
 		else:
 			current_state = states.IDLE
+		if Input.is_action_just_pressed("ui_down"):
+			current_state = states.SLIDE
 	run_current_state()
 	move_and_slide()
 	#print(velocity)
@@ -53,5 +61,18 @@ func run_current_state():
 		states.FALL:
 			$Label.text = "FALL"
 			$AnimatedSprite2D.play("Fall")
+		states.SLIDE:
+			velocity.x = direction * SPEED
+			$Label.text = "SLIDE"
+			$AnimatedSprite2D.play("Slide")
+			if $SlideTimer.time_left <= 0:
+				$SlideTimer.start()
+				
+	if current_state == states.SLIDE:
+		$SlideCollisionShape.set_deferred("disabled", false)
+		$CollisionShape2D.set_deferred("disabled", true)
+	else:
+		$SlideCollisionShape.set_deferred("disabled", true)
+		$CollisionShape2D.set_deferred("disabled", false)
 	
 	

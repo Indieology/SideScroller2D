@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bxhgxmk0aau5h"]
+[gd_scene load_steps=33 format=3 uid="uid://bxhgxmk0aau5h"]
 
 [ext_resource type="Texture2D" uid="uid://dkfaukijvuc65" path="res://Assets/Character/Idle/Idle_1.png" id="1_m4xyh"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_vgn3m"]
@@ -23,7 +23,11 @@
 [ext_resource type="Texture2D" uid="uid://ma56fga7r3fc" path="res://Assets/Character/Run Aim/Run-Aim_6.png" id="15_vp02s"]
 [ext_resource type="Texture2D" uid="uid://c7p86dkky1yh4" path="res://Assets/Character/Run Aim/Run-Aim_7.png" id="16_nmvcr"]
 [ext_resource type="Texture2D" uid="uid://bam7ww6b36hje" path="res://Assets/Character/Run Aim/Run-Aim_8.png" id="17_cyr8r"]
+[ext_resource type="Texture2D" uid="uid://dkvascd2c0l6q" path="res://Assets/Character/Slide/Slide_1.png" id="24_fuhu3"]
 [ext_resource type="FontFile" uid="uid://crqsri5laic81" path="res://Assets/Fonts/_bitmap_font____romulus_by_pix3m-d6aokem.ttf" id="24_fupka"]
+[ext_resource type="Texture2D" uid="uid://bfpu16emetmi1" path="res://Assets/Character/Slide/Slide_2.png" id="25_3l1qr"]
+[ext_resource type="Texture2D" uid="uid://cphjdds8jemi4" path="res://Assets/Character/Slide/Slide_3.png" id="26_1qyl1"]
+[ext_resource type="Texture2D" uid="uid://pv7ga3vfblwp" path="res://Assets/Character/Slide/Slide_4.png" id="27_m7nw7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wgebr"]
 animations = [{
@@ -112,11 +116,32 @@ animations = [{
 "loop": true,
 "name": &"Run_Aim",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_fuhu3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_3l1qr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_1qyl1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_m7nw7")
+}],
+"loop": false,
+"name": &"Slide",
+"speed": 7.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s7cdw"]
 radius = 8.0
 height = 34.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_grkn8"]
+radius = 8.0
+height = 24.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_px5dd"]
 font = ExtResource("24_fupka")
@@ -126,17 +151,26 @@ script = ExtResource("1_vgn3m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wgebr")
-animation = &"Fall"
+animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.742477
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-9, 7)
 shape = SubResource("CapsuleShape2D_s7cdw")
 
+[node name="SlideCollisionShape" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-9, 12)
+shape = SubResource("CapsuleShape2D_grkn8")
+
 [node name="JumpTimer" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
+
+[node name="SlideTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
 
 [node name="Label" type="Label" parent="."]
 offset_left = -26.0
