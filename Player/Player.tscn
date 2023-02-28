@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bxhgxmk0aau5h"]
+[gd_scene load_steps=60 format=3 uid="uid://bxhgxmk0aau5h"]
 
 [ext_resource type="Texture2D" uid="uid://dkfaukijvuc65" path="res://Assets/Character/Idle/Idle_1.png" id="1_m4xyh"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_vgn3m"]
@@ -25,9 +25,36 @@
 [ext_resource type="Texture2D" uid="uid://bam7ww6b36hje" path="res://Assets/Character/Run Aim/Run-Aim_8.png" id="17_cyr8r"]
 [ext_resource type="Texture2D" uid="uid://dkvascd2c0l6q" path="res://Assets/Character/Slide/Slide_1.png" id="24_fuhu3"]
 [ext_resource type="FontFile" uid="uid://crqsri5laic81" path="res://Assets/Fonts/_bitmap_font____romulus_by_pix3m-d6aokem.ttf" id="24_fupka"]
+[ext_resource type="Texture2D" uid="uid://sdvc4q0dgbpv" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 1/ShootRun1_1.png" id="24_qq0xp"]
 [ext_resource type="Texture2D" uid="uid://bfpu16emetmi1" path="res://Assets/Character/Slide/Slide_2.png" id="25_3l1qr"]
+[ext_resource type="Texture2D" uid="uid://djy3kwwno6f8u" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 2/ShootRun2_2.png" id="25_20qdy"]
 [ext_resource type="Texture2D" uid="uid://cphjdds8jemi4" path="res://Assets/Character/Slide/Slide_3.png" id="26_1qyl1"]
+[ext_resource type="Texture2D" uid="uid://b8j50vjyl8yic" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 3/ShootRun3_3.png" id="26_pojrr"]
+[ext_resource type="Texture2D" uid="uid://lxll482pd0s4" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 1/ShootRun1_2.png" id="27_2wubt"]
 [ext_resource type="Texture2D" uid="uid://pv7ga3vfblwp" path="res://Assets/Character/Slide/Slide_4.png" id="27_m7nw7"]
+[ext_resource type="Texture2D" uid="uid://cv5rcgq0gq7uf" path="res://Assets/Character/Shoot Fall/Shoot-Fall_1.png" id="27_p02o2"]
+[ext_resource type="Texture2D" uid="uid://vpq0qemy4plv" path="res://Assets/Character/Shoot Fall/Shoot-Fall_2.png" id="28_06t0y"]
+[ext_resource type="Texture2D" uid="uid://dk3es46akji81" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 2/ShootRun2_3.png" id="28_y0fsi"]
+[ext_resource type="Texture2D" uid="uid://bjbwxurveq45l" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 3/ShootRun3_4.png" id="29_7we0r"]
+[ext_resource type="Texture2D" uid="uid://by2460xlttmij" path="res://Assets/Character/Shoot Fall/Shoot-Fall_3.png" id="29_441c3"]
+[ext_resource type="Texture2D" uid="uid://tuxwg5csbgw2" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 1/ShootRun1_3.png" id="30_nd3dd"]
+[ext_resource type="Texture2D" uid="uid://7y2bx1vi84y0" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 2/ShootRun2_4.png" id="31_1w0tt"]
+[ext_resource type="Texture2D" uid="uid://dqnpatbon2aqu" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 3/ShootRun3_5.png" id="32_3otxj"]
+[ext_resource type="Texture2D" uid="uid://cg24exlw16d2y" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 1/ShootRun1_4.png" id="33_bew80"]
+[ext_resource type="Texture2D" uid="uid://da4mdlsxvt2h" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 2/ShootRun2_5.png" id="34_wc131"]
+[ext_resource type="Texture2D" uid="uid://b1i2n0i1wp0x5" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 3/ShootRun3_6.png" id="35_c6p6e"]
+[ext_resource type="Texture2D" uid="uid://8q8qajtwgmt4" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 1/ShootRun1_5.png" id="36_c71s1"]
+[ext_resource type="Texture2D" uid="uid://dwtvw7lm5whq4" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 2/ShootRun2_6.png" id="37_ei1f5"]
+[ext_resource type="Texture2D" uid="uid://l6xc2m5dnes5" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 3/ShootRun3_7.png" id="38_ykbfk"]
+[ext_resource type="Texture2D" uid="uid://bbbjkuu2kmsh5" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 1/ShootRun1_6.png" id="39_24v28"]
+[ext_resource type="Texture2D" uid="uid://i3lmk3veajnk" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 2/ShootRun2_7.png" id="40_j6sbu"]
+[ext_resource type="Texture2D" uid="uid://dmm63d8aee6hc" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 3/ShootRun3_8.png" id="41_b1s00"]
+[ext_resource type="Texture2D" uid="uid://bl5js6l6tprlq" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 1/ShootRun1_7.png" id="42_uhpvb"]
+[ext_resource type="Texture2D" uid="uid://cmxwuywwftm1g" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 2/ShootRun2_8.png" id="43_vus72"]
+[ext_resource type="Texture2D" uid="uid://dpmoprf06ub5" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 3/ShootRun3_1.png" id="44_t2hfy"]
+[ext_resource type="Texture2D" uid="uid://bh8ekcfjxbqsr" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 1/ShootRun1_8.png" id="45_owe1u"]
+[ext_resource type="Texture2D" uid="uid://btn7uq1m8h0ei" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 2/ShootRun2_1.png" id="46_f4ie3"]
+[ext_resource type="Texture2D" uid="uid://bphrdtgd665w" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 3/ShootRun3_2.png" id="47_rq4qx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wgebr"]
 animations = [{
@@ -119,6 +146,132 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("24_qq0xp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_20qdy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_pojrr")
+}],
+"loop": false,
+"name": &"Shoot1",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_2wubt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_y0fsi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_7we0r")
+}],
+"loop": false,
+"name": &"Shoot2",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_nd3dd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_1w0tt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_3otxj")
+}],
+"loop": false,
+"name": &"Shoot3",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("33_bew80")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_wc131")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_c6p6e")
+}],
+"loop": false,
+"name": &"Shoot4",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("36_c71s1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_ei1f5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_ykbfk")
+}],
+"loop": false,
+"name": &"Shoot5",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("39_24v28")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_j6sbu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_b1s00")
+}],
+"loop": false,
+"name": &"Shoot6",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("42_uhpvb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_vus72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_t2hfy")
+}],
+"loop": false,
+"name": &"Shoot7",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("45_owe1u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_f4ie3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_rq4qx")
+}],
+"loop": false,
+"name": &"Shoot8",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_p02o2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_06t0y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_441c3")
+}],
+"loop": false,
+"name": &"Shoot_Fall",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("24_fuhu3")
 }, {
 "duration": 1.0,
@@ -151,10 +304,11 @@ script = ExtResource("1_vgn3m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wgebr")
-animation = &"Idle"
+animation = &"Fall"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-9, 7)
 shape = SubResource("CapsuleShape2D_s7cdw")
 
@@ -169,6 +323,11 @@ one_shot = true
 
 [node name="SlideTimer" type="Timer" parent="."]
 wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.3
 one_shot = true
 autostart = true
 
