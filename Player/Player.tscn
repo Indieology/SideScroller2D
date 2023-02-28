@@ -116,7 +116,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s7cdw"]
 radius = 8.0
-height = 32.0
+height = 34.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_px5dd"]
 font = ExtResource("24_fupka")
@@ -131,7 +131,7 @@ autoplay = "Idle"
 frame_progress = 0.742477
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-9, 9)
+position = Vector2(-9, 7)
 shape = SubResource("CapsuleShape2D_s7cdw")
 
 [node name="JumpTimer" type="Timer" parent="."]
