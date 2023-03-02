@@ -162,6 +162,8 @@ func run_current_state():
 func fire_bullet():
 	$BulletSpawn/ShootEffect.visible = true
 	$BulletSpawn/ShootEffect.play("Shoot")
-
+	var bullet = preload("res://Player/bullet.tscn").instantiate()
+	$BulletSpawn.add_child(bullet)
+	$BulletSpawn.move_child(bullet, 0)
 func _on_shoot_effect_animation_finished():
 	$BulletSpawn/ShootEffect.visible = false

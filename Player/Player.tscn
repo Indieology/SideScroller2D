@@ -77,7 +77,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Shoot",
-"speed": 10.0
+"speed": 14.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wgebr"]

@@ -1,0 +1,76 @@
+[gd_scene load_steps=13 format=3 uid="uid://0kc34e1uw7vc"]
+
+[ext_resource type="Script" path="res://Player/Bullet.gd" id="1_pvmj8"]
+[ext_resource type="Texture2D" uid="uid://beite0yo26gr6" path="res://Assets/Effects/Bullet 2/Bulet-2_1.png" id="2_jqnnw"]
+[ext_resource type="Texture2D" uid="uid://2vkyxl7phqa4" path="res://Assets/Effects/Bullet 2/Bulet-2_2.png" id="3_ryqgi"]
+[ext_resource type="Texture2D" uid="uid://bt8qgsqlduu4s" path="res://Assets/Effects/Bullet 2/Bulet-2_3.png" id="4_2x1gh"]
+[ext_resource type="Texture2D" uid="uid://cdewg3udvp41n" path="res://Assets/Effects/Impact 2/Impact-2_1.png" id="5_ip7l5"]
+[ext_resource type="Texture2D" uid="uid://bp6jcn02ibmep" path="res://Assets/Effects/Impact 2/Impact-2_2.png" id="6_3632x"]
+[ext_resource type="Texture2D" uid="uid://o1xn05wnade2" path="res://Assets/Effects/Impact 2/Impact-2_3.png" id="7_w38vi"]
+[ext_resource type="Texture2D" uid="uid://0fvuiwyc018o" path="res://Assets/Effects/Impact 2/Impact-2_4.png" id="8_tt1b6"]
+[ext_resource type="Texture2D" uid="uid://cjw0731lef0lw" path="res://Assets/Effects/Impact 2/Impact-2_5.png" id="9_f3xq2"]
+[ext_resource type="Texture2D" uid="uid://ny0w7kw7n7v1" path="res://Assets/Effects/Impact 2/Impact-2_6.png" id="10_qmtf5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rnix5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jqnnw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ryqgi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2x1gh")
+}],
+"loop": true,
+"name": &"Bullet",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ip7l5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3632x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_w38vi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tt1b6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_f3xq2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qmtf5")
+}],
+"loop": false,
+"name": &"Explosion",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_11xtx"]
+radius = 4.0
+height = 16.0
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_pvmj8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_rnix5")
+animation = &"Bullet"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_11xtx")
+
+[node name="LifetimeTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
