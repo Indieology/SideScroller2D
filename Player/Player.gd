@@ -107,39 +107,51 @@ func run_current_state():
 			velocity.x = direction * SPEED
 			$Label.text = "SHOOT"
 			if $ShootTimer.time_left <= 0:
+				fire_bullet()
 				$ShootTimer.start()
 				match $AnimatedSprite2D.frame:
 					0:
 						$AnimatedSprite2D.play("Shoot1")
 						last_shoot_animation = "Shoot1"
+						$BulletSpawn.position = Vector2(16,-3)
 					1:
 						$AnimatedSprite2D.play("Shoot2")
 						last_shoot_animation = "Shoot2"
+						$BulletSpawn.position = Vector2(15,-5)
 					2:
 						$AnimatedSprite2D.play("Shoot3")
 						last_shoot_animation = "Shoot3"
+						$BulletSpawn.position = Vector2(16,-4)
 					3:
 						$AnimatedSprite2D.play("Shoot4")
 						last_shoot_animation = "Shoot4"
+						$BulletSpawn.position = Vector2(16,-2)
 					4:
 						$AnimatedSprite2D.play("Shoot5")
 						last_shoot_animation = "Shoot5"
+						$BulletSpawn.position = Vector2(17,-2)
 					5:
 						$AnimatedSprite2D.play("Shoot6")
 						last_shoot_animation = "Shoot6"
+						$BulletSpawn.position = Vector2(16,-4)
 					6:
 						$AnimatedSprite2D.play("Shoot7")
 						last_shoot_animation = "Shoot7"
+						$BulletSpawn.position = Vector2(17,-3)
 					7:
 						$AnimatedSprite2D.play("Shoot8")
 						last_shoot_animation = "Shoot8"
+						$BulletSpawn.position = Vector2(17,-1)
 		states.SHOOT_FALL:
+			$BulletSpawn.position = Vector2(19,-6)
 			$Label.text = "SHOOT FALL"
 			if $ShootTimer.time_left <= 0:
+				fire_bullet()
 				$ShootTimer.start()
 				$AnimatedSprite2D.play("Shoot_Fall")
 			if is_on_floor():
 				current_state = states.RUN
+			
 	if current_state == states.SLIDE:
 		$SlideCollisionShape.set_deferred("disabled", false)
 		$CollisionShape2D.set_deferred("disabled", true)
@@ -147,4 +159,9 @@ func run_current_state():
 		$SlideCollisionShape.set_deferred("disabled", true)
 		$CollisionShape2D.set_deferred("disabled", false)
 	
-	
+func fire_bullet():
+	$BulletSpawn/ShootEffect.visible = true
+	$BulletSpawn/ShootEffect.play("Shoot")
+
+func _on_shoot_effect_animation_finished():
+	$BulletSpawn/ShootEffect.visible = false

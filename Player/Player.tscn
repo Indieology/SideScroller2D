@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bxhgxmk0aau5h"]
+[gd_scene load_steps=65 format=3 uid="uid://bxhgxmk0aau5h"]
 
 [ext_resource type="Texture2D" uid="uid://dkfaukijvuc65" path="res://Assets/Character/Idle/Idle_1.png" id="1_m4xyh"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_vgn3m"]
@@ -55,6 +55,30 @@
 [ext_resource type="Texture2D" uid="uid://bh8ekcfjxbqsr" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 1/ShootRun1_8.png" id="45_owe1u"]
 [ext_resource type="Texture2D" uid="uid://btn7uq1m8h0ei" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 2/ShootRun2_1.png" id="46_f4ie3"]
 [ext_resource type="Texture2D" uid="uid://bphrdtgd665w" path="res://Assets/Character/Shoot-Run-Cycle/ShootRun 3/ShootRun3_2.png" id="47_rq4qx"]
+[ext_resource type="Texture2D" uid="uid://dtx0n6y4rksh" path="res://Assets/Effects/ShotGun Shoot/ShotGun-Shoot_1.png" id="55_mbpag"]
+[ext_resource type="Texture2D" uid="uid://bwgww26v15577" path="res://Assets/Effects/ShotGun Shoot/ShotGun-Shoot_2.png" id="56_1g17l"]
+[ext_resource type="Texture2D" uid="uid://dm6uj4i5d6qnb" path="res://Assets/Effects/ShotGun Shoot/ShotGun-Shoot_3.png" id="57_bepr3"]
+[ext_resource type="Texture2D" uid="uid://cup4w63ps7msw" path="res://Assets/Effects/ShotGun Shoot/ShotGun-Shoot_4.png" id="58_iv2ji"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a3i1n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("55_mbpag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_1g17l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_bepr3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_iv2ji")
+}],
+"loop": false,
+"name": &"Shoot",
+"speed": 10.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wgebr"]
 animations = [{
@@ -302,9 +326,20 @@ font = ExtResource("24_fupka")
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_vgn3m")
 
+[node name="BulletSpawn" type="Marker2D" parent="."]
+position = Vector2(19, -6)
+
+[node name="ShootEffect" type="AnimatedSprite2D" parent="BulletSpawn"]
+visible = false
+position = Vector2(10, 0)
+sprite_frames = SubResource("SpriteFrames_a3i1n")
+animation = &"Shoot"
+frame = 3
+frame_progress = 1.0
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wgebr")
-animation = &"Fall"
+animation = &"Shoot_Fall"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -338,3 +373,5 @@ offset_right = 14.0
 offset_bottom = -4.0
 text = "idle"
 label_settings = SubResource("LabelSettings_px5dd")
+
+[connection signal="animation_finished" from="BulletSpawn/ShootEffect" to="." method="_on_shoot_effect_animation_finished"]
