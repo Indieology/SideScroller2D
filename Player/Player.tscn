@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://bxhgxmk0aau5h"]
+[gd_scene load_steps=74 format=3 uid="uid://bxhgxmk0aau5h"]
 
 [ext_resource type="Texture2D" uid="uid://dkfaukijvuc65" path="res://Assets/Character/Idle/Idle_1.png" id="1_m4xyh"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_vgn3m"]
@@ -59,6 +59,14 @@
 [ext_resource type="Texture2D" uid="uid://bwgww26v15577" path="res://Assets/Effects/ShotGun Shoot/ShotGun-Shoot_2.png" id="56_1g17l"]
 [ext_resource type="Texture2D" uid="uid://dm6uj4i5d6qnb" path="res://Assets/Effects/ShotGun Shoot/ShotGun-Shoot_3.png" id="57_bepr3"]
 [ext_resource type="Texture2D" uid="uid://cup4w63ps7msw" path="res://Assets/Effects/ShotGun Shoot/ShotGun-Shoot_4.png" id="58_iv2ji"]
+[ext_resource type="Texture2D" uid="uid://838qbwt0ofho" path="res://Assets/Effects/Landing/Landing_1.png" id="59_00x2m"]
+[ext_resource type="Texture2D" uid="uid://dwlus78ohro3b" path="res://Assets/Effects/Landing/Landing_2.png" id="60_bcwts"]
+[ext_resource type="Texture2D" uid="uid://cxmstrssyvviw" path="res://Assets/Effects/Landing/Landing_3.png" id="61_iol4h"]
+[ext_resource type="Texture2D" uid="uid://ce030vmfgf1ay" path="res://Assets/Effects/Landing/Landing_4.png" id="62_78ixo"]
+[ext_resource type="Texture2D" uid="uid://cjdxxgsjln8ti" path="res://Assets/Effects/Landing/Landing_5.png" id="63_p4nti"]
+[ext_resource type="Texture2D" uid="uid://cquj4qx2rv72s" path="res://Assets/Effects/Slide/Slide_1.png" id="64_1n5bg"]
+[ext_resource type="Texture2D" uid="uid://byywqyppdan8g" path="res://Assets/Effects/Slide/Slide_2.png" id="65_j7om3"]
+[ext_resource type="Texture2D" uid="uid://davr4cp1fpsru" path="res://Assets/Effects/Slide/Slide_3.png" id="66_wglbw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a3i1n"]
 animations = [{
@@ -312,6 +320,43 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_hwjws"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("59_00x2m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_bcwts")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_iol4h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_78ixo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_p4nti")
+}],
+"loop": false,
+"name": &"Landing",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("64_1n5bg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_j7om3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_wglbw")
+}],
+"loop": true,
+"name": &"Sliding",
+"speed": 10.0
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s7cdw"]
 radius = 8.0
 height = 34.0
@@ -339,8 +384,14 @@ frame_progress = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wgebr")
-animation = &"Shoot_Fall"
+animation = &"Slide"
 autoplay = "Idle"
+
+[node name="DustEffects" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 19)
+sprite_frames = SubResource("SpriteFrames_hwjws")
+animation = &"Sliding"
+frame_progress = 0.548529
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -375,3 +426,5 @@ text = "idle"
 label_settings = SubResource("LabelSettings_px5dd")
 
 [connection signal="animation_finished" from="BulletSpawn/ShootEffect" to="." method="_on_shoot_effect_animation_finished"]
+[connection signal="animation_finished" from="DustEffects" to="." method="_on_dust_effects_animation_finished"]
+[connection signal="timeout" from="SlideTimer" to="." method="_on_slide_timer_timeout"]

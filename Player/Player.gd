@@ -49,7 +49,6 @@ func _physics_process(delta):
 			current_state = states.SLIDE
 	run_current_state()
 	move_and_slide()
-	#print(velocity)
 
 func run_current_state():
 	
@@ -91,6 +90,7 @@ func run_current_state():
 			$Label.text = "JUMP"
 			$AnimatedSprite2D.play("Jump")
 			velocity.x = direction * SPEED
+			$DustEffects.hide()
 			if $JumpTimer.time_left <= 0:
 				velocity.y = JUMP_VELOCITY
 				$JumpTimer.start()
@@ -103,6 +103,8 @@ func run_current_state():
 			$AnimatedSprite2D.play("Slide")
 			if $SlideTimer.time_left <= 0:
 				$SlideTimer.start()
+				$DustEffects.show()
+				$DustEffects.play("Sliding")
 		states.SHOOT:
 			velocity.x = direction * SPEED
 			$Label.text = "SHOOT"
@@ -160,10 +162,17 @@ func run_current_state():
 		$CollisionShape2D.set_deferred("disabled", false)
 	
 func fire_bullet():
-	$BulletSpawn/ShootEffect.visible = true
+	$BulletSpawn/ShootEffect.show()
 	$BulletSpawn/ShootEffect.play("Shoot")
 	var bullet = preload("res://Player/bullet.tscn").instantiate()
 	$BulletSpawn.add_child(bullet)
 	$BulletSpawn.move_child(bullet, 0)
+
 func _on_shoot_effect_animation_finished():
-	$BulletSpawn/ShootEffect.visible = false
+	$BulletSpawn/ShootEffect.hide()
+
+func _on_dust_effects_animation_finished():
+	$DustEffects.hide()
+
+func _on_slide_timer_timeout():
+	$DustEffects.hide()
