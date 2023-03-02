@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -275.0
 
 var gravity = 986
 var direction = Vector2.ZERO
+var just_jumped = false
 
 enum states {IDLE, RUN, JUMP, FALL, SLIDE, SHOOT, SHOOT_FALL}
 var current_state = states.IDLE
@@ -90,10 +91,11 @@ func run_current_state():
 			$Label.text = "JUMP"
 			$AnimatedSprite2D.play("Jump")
 			velocity.x = direction * SPEED
-			$DustEffects.hide()
+			$SliddingEffect.hide()
 			if $JumpTimer.time_left <= 0:
 				velocity.y = JUMP_VELOCITY
 				$JumpTimer.start()
+				just_jumped = true
 		states.FALL:
 			$Label.text = "FALL"
 			$AnimatedSprite2D.play("Fall")
@@ -103,8 +105,8 @@ func run_current_state():
 			$AnimatedSprite2D.play("Slide")
 			if $SlideTimer.time_left <= 0:
 				$SlideTimer.start()
-				$DustEffects.show()
-				$DustEffects.play("Sliding")
+				$SliddingEffect.show()
+				$SliddingEffect.play("Sliding")
 		states.SHOOT:
 			velocity.x = direction * SPEED
 			$Label.text = "SHOOT"
@@ -161,6 +163,11 @@ func run_current_state():
 		$SlideCollisionShape.set_deferred("disabled", true)
 		$CollisionShape2D.set_deferred("disabled", false)
 	
+	if just_jumped and is_on_floor() and $JumpTimer.is_stopped():
+		just_jumped = false
+		$LandingEffect.show()
+		$LandingEffect.play("Landing")
+	
 func fire_bullet():
 	$BulletSpawn/ShootEffect.show()
 	$BulletSpawn/ShootEffect.play("Shoot")
@@ -172,7 +179,10 @@ func _on_shoot_effect_animation_finished():
 	$BulletSpawn/ShootEffect.hide()
 
 func _on_dust_effects_animation_finished():
-	$DustEffects.hide()
+	$SliddingEffect.hide()
 
 func _on_slide_timer_timeout():
-	$DustEffects.hide()
+	$SliddingEffect.hide()
+
+func _on_landing_effect_animation_finished():
+	$LandingEffect.hide()

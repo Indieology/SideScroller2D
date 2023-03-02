@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://bxhgxmk0aau5h"]
+[gd_scene load_steps=75 format=3 uid="uid://bxhgxmk0aau5h"]
 
 [ext_resource type="Texture2D" uid="uid://dkfaukijvuc65" path="res://Assets/Character/Idle/Idle_1.png" id="1_m4xyh"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_vgn3m"]
@@ -324,6 +324,23 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("64_1n5bg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_j7om3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_wglbw")
+}],
+"loop": true,
+"name": &"Sliding",
+"speed": 10.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8j1js"]
+animations = [{
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("59_00x2m")
 }, {
 "duration": 1.0,
@@ -341,20 +358,6 @@ animations = [{
 "loop": false,
 "name": &"Landing",
 "speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("64_1n5bg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("65_j7om3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("66_wglbw")
-}],
-"loop": true,
-"name": &"Sliding",
-"speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s7cdw"]
@@ -384,14 +387,22 @@ frame_progress = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wgebr")
-animation = &"Slide"
+animation = &"Run_Aim"
 autoplay = "Idle"
 
-[node name="DustEffects" type="AnimatedSprite2D" parent="."]
+[node name="SliddingEffect" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(0, 19)
 sprite_frames = SubResource("SpriteFrames_hwjws")
 animation = &"Sliding"
-frame_progress = 0.548529
+
+[node name="LandingEffect" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-23, 18)
+sprite_frames = SubResource("SpriteFrames_8j1js")
+animation = &"Landing"
+frame = 4
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -426,5 +437,6 @@ text = "idle"
 label_settings = SubResource("LabelSettings_px5dd")
 
 [connection signal="animation_finished" from="BulletSpawn/ShootEffect" to="." method="_on_shoot_effect_animation_finished"]
-[connection signal="animation_finished" from="DustEffects" to="." method="_on_dust_effects_animation_finished"]
+[connection signal="animation_finished" from="SliddingEffect" to="." method="_on_dust_effects_animation_finished"]
+[connection signal="animation_finished" from="LandingEffect" to="." method="_on_landing_effect_animation_finished"]
 [connection signal="timeout" from="SlideTimer" to="." method="_on_slide_timer_timeout"]
